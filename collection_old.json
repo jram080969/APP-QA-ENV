@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "99a755a6-ac26-4bc0-96a1-6a0963cd6c9a",
+    "name": "APPS-POLICY_PRO",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52559030",
+    "_collection_link": "https://go.postman.co/collection/52559030-99a755a6-ac26-4bc0-96a1-6a0963cd6c9a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "ADD POLICIES",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Status check\r",
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "\r",
+              "// Parse response\r",
+              "let jsonData = pm.response.json();\r",
+              "\r",
+              "// Validate response exists\r",
+              "pm.test(\"Response is not empty\", function () {\r",
+              "    pm.expect(jsonData).to.not.be.empty;\r",
+              "});\r",
+              "\r",
+              "// Validate ID\r",
+              "pm.test(\"Policy ID created\", function () {\r",
+              "    pm.expect(jsonData.id).to.exist;\r",
+              "});\r",
+              "\r",
+              "// Save variables\r",
+              "pm.environment.set(\"policyId\", jsonData.id);\r",
+              "pm.environment.set(\"policyNumber\", jsonData.policyNumber);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"customer\": {\r\n    \"name\": \"Ravi Kumar\",\r\n    \"age\": 28,\r\n    \"driverLicense\": \"DL-AP-123456\",\r\n    \"address\": \"Madhurawada, Vizag\"\r\n  },\r\n  \"vehicle\": {\r\n    \"make\": \"Maruti\",\r\n    \"model\": \"Swift\",\r\n    \"year\": 2019,\r\n    \"vin\": \"SWIFT2019VIN123\"\r\n  },\r\n  \"coverage\": {\r\n    \"type\": \"Full Coverage\",\r\n    \"liabilityLimit\": 500000,\r\n    \"collisionDeductible\": 5000,\r\n    \"comprehensiveDeductible\": 3000\r\n  },\r\n  \"discounts\": {\r\n    \"safeDriver\": true,\r\n    \"multiPolicy\": false,\r\n    \"antiTheftDevice\": true\r\n  },\r\n  \"rating\": {\r\n    \"baseRate\": 10000,\r\n    \"riskFactor\": 2000,\r\n    \"discountAmount\": 1000,\r\n    \"taxes\": 500,\r\n    \"calculatedPremium\": 11500\r\n  },\r\n  \"underwriting\": {\r\n    \"riskLevel\": \"Low\",\r\n    \"status\": \"Auto-Approved\"\r\n  },\r\n  \"payment\": {\r\n    \"amount\": 11500,\r\n    \"method\": \"Debit Card\",\r\n    \"transactionId\": \"{{transactionId}}\"\r\n  },\r\n  \"issuance\": {\r\n    \"issueDate\": \"{{issueDate}}\",\r\n    \"documentLink\": \"https://mockapi.io/policies/{{policyId}}.pdf\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/policies",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "policies"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET POLICIES",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Check status code\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "// Parse response JSON\r",
+              "let jsonData = pm.response.json();\r",
+              "\r",
+              "// Validate policyId exists\r",
+              "pm.test(\"Policy ID exists\", function () {\r",
+              "    pm.expect(jsonData.policyNumber).to.not.be.undefined;\r",
+              "});\r",
+              "\r",
+              "// Save customer name into environment\r",
+              "pm.environment.set(\"customerName\", jsonData.customer.name);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/policies/{{policyId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "policies",
+            "{{policyId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UPDATE POLICY",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Check status code\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "// Parse response JSON\r",
+              "let jsonData = pm.response.json();\r",
+              "\r",
+              "// Validate update message\r",
+              "pm.test(\"Policy updated successfully\", function () {\r",
+              "    pm.expect(jsonData.message).to.eql(\"Policy updated successfully\");\r",
+              "});\r",
+              "\r",
+              "// Save updatedAt timestamp\r",
+              "pm.environment.set(\"updatedAt\", jsonData.updatedAt);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "file",
+          "file": {}
+        },
+        "url": {
+          "raw": "{{baseUrl}}/policies/{{policyId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "policies",
+            "{{policyId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DEL policy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Check status code\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "// Parse response JSON\r",
+              "let jsonData = pm.response.json();\r",
+              "\r",
+              "// Validate delete message\r",
+              "\r",
+              "pm.test(\"Policy deleted successfully\", function () {\r",
+              "    pm.expect(jsonData.id).to.eql(pm.environment.get(\"policyId\"));\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/policies/{{policyId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "policies",
+            "{{policyId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

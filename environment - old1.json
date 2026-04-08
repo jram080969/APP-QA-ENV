@@ -1,0 +1,365 @@
+{
+	"id": "06b6bb3d-d154-4463-86bc-5989e90710e6",
+	"name": "APPS-POLICY_PRO",
+	"timestamp": "2026-04-07T06:29:40.160Z",
+	"collection_id": "52559030-99a755a6-ac26-4bc0-96a1-6a0963cd6c9a",
+	"folder_id": 0,
+	"environment_id": "52559030-0e3e0d78-7a29-434a-8dfd-f77b42078d71",
+	"totalPass": 90,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-04-07T06:29:35.257Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "75ae59c8-1e7e-43b5-881b-bc4f5bfac3eb",
+			"name": "ADD POLICIES",
+			"url": "http://localhost:3000/policies",
+			"time": 5,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response is not empty": true,
+				"Policy ID created": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 10,
+					"fail": 0
+				},
+				"Response is not empty": {
+					"pass": 10,
+					"fail": 0
+				},
+				"Policy ID created": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				11,
+				5,
+				5,
+				4,
+				4,
+				3,
+				4,
+				4,
+				4,
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				},
+				{
+					"Status code is 201": true,
+					"Response is not empty": true,
+					"Policy ID created": true
+				}
+			]
+		},
+		{
+			"id": "1e18ef1b-1006-40c7-8479-76ca679015cd",
+			"name": "GET POLICIES",
+			"url": "http://localhost:3000/policies/22",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Policy ID exists": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 10,
+					"fail": 0
+				},
+				"Policy ID exists": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				4,
+				4,
+				4,
+				3,
+				6,
+				4,
+				4,
+				5,
+				3,
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy ID exists": true
+				}
+			]
+		},
+		{
+			"id": "c6fb0d04-fb84-4b0c-b153-448957a540e6",
+			"name": "UPDATE POLICY",
+			"url": "http://localhost:3000/policies/22",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Policy updated successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 10,
+					"fail": 0
+				},
+				"Policy updated successfully": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				4,
+				4,
+				4,
+				4,
+				3,
+				4,
+				3,
+				4,
+				4,
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy updated successfully": true
+				}
+			]
+		},
+		{
+			"id": "7a483a65-5719-4716-867c-4cc3a0f2462a",
+			"name": "DEL policy",
+			"url": "http://localhost:3000/policies/22",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Policy deleted successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 10,
+					"fail": 0
+				},
+				"Policy deleted successfully": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				4,
+				4,
+				4,
+				5,
+				3,
+				3,
+				3,
+				3,
+				4,
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				},
+				{
+					"Status code is 200": true,
+					"Policy deleted successfully": true
+				}
+			]
+		}
+	],
+	"count": 10,
+	"totalTime": 162,
+	"collection": {
+		"requests": [
+			{
+				"id": "75ae59c8-1e7e-43b5-881b-bc4f5bfac3eb",
+				"method": "POST"
+			},
+			{
+				"id": "1e18ef1b-1006-40c7-8479-76ca679015cd",
+				"method": "GET"
+			},
+			{
+				"id": "c6fb0d04-fb84-4b0c-b153-448957a540e6",
+				"method": "PATCH"
+			},
+			{
+				"id": "7a483a65-5719-4716-867c-4cc3a0f2462a",
+				"method": "GET"
+			}
+		]
+	}
+}
