@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs "NodeJS_18"   // Use the NodeJS tool you configured in Jenkins
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Newman') {
+            steps {
+                sh 'npm install -g newman newman-reporter-htmlextra'
+            }
+        }
+
+        stage('Run API Tests') {
+            steps {
+                sh '''
+                newman run APPS-POLICY_PRO.postman_collection.json \
+                  -e APP-QA-ENV-GULF.postman_environment.json \
+                  -r cli,htmlextra \
+                  --reporter-htmlextra-export report.html
+                '''
+            }
+        }
+
+        stage('Publish Report') {
+            steps {
+                publishHTML(target: [
+                    reportDir: '.',
+                    reportFiles: 'report.html',
+                    reportName: 'API Test Report'
+                ])
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'report.html', fingerprint: true
+        }
+    }
+}
