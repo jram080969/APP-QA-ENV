@@ -14,22 +14,56 @@
           "listen": "test",
           "script": {
             "exec": [
+              "// ✅ Check status code\r",
               "pm.test(\"Status code is 201\", function () {\r",
               "    pm.response.to.have.status(201);\r",
               "});\r",
               "\r",
+              "// ✅ Parse response JSON\r",
               "let jsonData = pm.response.json();\r",
               "\r",
+              "// ✅ Ensure response is not empty\r",
               "pm.test(\"Response is not empty\", function () {\r",
               "    pm.expect(jsonData).to.not.be.empty;\r",
               "});\r",
               "\r",
-              "pm.test(\"Policy ID created\", function () {\r",
+              "// ✅ Verify policy object created\r",
+              "pm.test(\"Policy object created\", function () {\r",
               "    pm.expect(jsonData.id).to.exist;\r",
+              "    pm.expect(jsonData.policyNumber).to.exist;\r",
               "});\r",
               "\r",
+              "// ✅ Verify customer details exist\r",
+              "pm.test(\"Customer details exist\", function () {\r",
+              "    pm.expect(jsonData.customer).to.have.property(\"name\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Verify vehicle details exist\r",
+              "pm.test(\"Vehicle details exist\", function () {\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"make\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"model\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"year\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"vin\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Verify coverage details exist\r",
+              "pm.test(\"Coverage details exist\", function () {\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"type\");\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"liabilityLimit\");\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"collisionDeductible\");\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"comprehensiveDeductible\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Verify discounts exist\r",
+              "pm.test(\"Discounts exist\", function () {\r",
+              "    pm.expect(jsonData.discounts).to.have.property(\"safeDriver\");\r",
+              "    pm.expect(jsonData.discounts).to.have.property(\"multiPolicy\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Save important values into environment for later use\r",
               "pm.environment.set(\"policyId\", jsonData.id);\r",
-              "pm.environment.set(\"policyNumber\", jsonData.policyNumber);"
+              "pm.environment.set(\"policyNumber\", jsonData.policyNumber);\r",
+              "pm.environment.set(\"customerName\", jsonData.customer.name);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -50,9 +84,9 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/policies",
+          "raw": "{{baseurl}}/policies",
           "host": [
-            "{{baseUrl}}"
+            "{{baseurl}}"
           ],
           "path": [
             "policies"
@@ -68,20 +102,41 @@
           "listen": "test",
           "script": {
             "exec": [
-              "// Check status code\r",
+              "// ✅ Check status code\r",
               "pm.test(\"Status code is 200\", function () {\r",
               "    pm.response.to.have.status(200);\r",
               "});\r",
               "\r",
-              "// Parse response JSON\r",
+              "// ✅ Parse response JSON\r",
               "let jsonData = pm.response.json();\r",
               "\r",
-              "// Validate policyId exists\r",
-              "pm.test(\"Policy ID exists\", function () {\r",
+              "// ✅ Ensure response is not empty\r",
+              "pm.test(\"Response is not empty\", function () {\r",
+              "    pm.expect(jsonData).to.not.be.empty;\r",
+              "});\r",
+              "\r",
+              "// ✅ Verify policy object exists\r",
+              "pm.test(\"Policy object exists\", function () {\r",
+              "    pm.expect(jsonData.id).to.exist;\r",
               "    pm.expect(jsonData.policyNumber).to.not.be.undefined;\r",
               "});\r",
               "\r",
-              "// Save customer name into environment\r",
+              "// ✅ Verify customer details exist\r",
+              "pm.test(\"Customer details exist\", function () {\r",
+              "    pm.expect(jsonData.customer).to.have.property(\"name\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Verify vehicle details exist\r",
+              "pm.test(\"Vehicle details exist\", function () {\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"make\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"model\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"year\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"vin\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Save important values into environment for later use\r",
+              "pm.environment.set(\"policyId\", jsonData.id);\r",
+              "pm.environment.set(\"policyNumber\", jsonData.policyNumber);\r",
               "pm.environment.set(\"customerName\", jsonData.customer.name);"
             ],
             "type": "text/javascript",
@@ -106,9 +161,9 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/policies/{{policyId}}",
+          "raw": "{{baseurl}}/policies/{{policyId}}",
           "host": [
-            "{{baseUrl}}"
+            "{{baseurl}}"
           ],
           "path": [
             "policies",
@@ -125,18 +180,48 @@
           "listen": "test",
           "script": {
             "exec": [
+              "// ✅ Check status code\r",
               "pm.test(\"Status code is 200\", function () {\r",
               "    pm.response.to.have.status(200);\r",
               "});\r",
               "\r",
+              "// ✅ Parse response JSON\r",
               "let jsonData = pm.response.json();\r",
               "\r",
+              "// ✅ Ensure response is not empty\r",
               "pm.test(\"Response is not empty\", function () {\r",
               "    pm.expect(jsonData).to.not.be.empty;\r",
               "});\r",
               "\r",
-              "pm.test(\"Policy updated\", function () {\r",
-              "    pm.expect(jsonData.policy.id).to.exist;\r",
+              "// ✅ Verify policy object exists\r",
+              "pm.test(\"Policy object exists\", function () {\r",
+              "    pm.expect(jsonData.id).to.exist;\r",
+              "    pm.expect(jsonData.policyNumber).to.exist;\r",
+              "});\r",
+              "\r",
+              "// ✅ Verify customer name was updated\r",
+              "pm.test(\"Customer name updated\", function () {\r",
+              "    pm.expect(jsonData.customer.name).to.eql(\"Ravi Kumar Updated\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Optional: Verify unchanged fields still exist\r",
+              "pm.test(\"Vehicle details intact\", function () {\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"make\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"model\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"year\");\r",
+              "    pm.expect(jsonData.vehicle).to.have.property(\"vin\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Coverage details intact\", function () {\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"type\");\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"liabilityLimit\");\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"collisionDeductible\");\r",
+              "    pm.expect(jsonData.coverage).to.have.property(\"comprehensiveDeductible\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Discounts intact\", function () {\r",
+              "    pm.expect(jsonData.discounts).to.have.property(\"safeDriver\");\r",
+              "    pm.expect(jsonData.discounts).to.have.property(\"multiPolicy\");\r",
               "});"
             ],
             "type": "text/javascript",
@@ -150,7 +235,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"customer\": {\r\n    \"name\": \"Ravi Kumar Updated\"\r\n  }\r\n}",
+          "raw": "{\r\n  \"id\": 5,\r\n  \"policyNumber\": \"POL5\",\r\n  \"customer\": {\r\n    \"name\": \"Ravi Kumar Updated\"\r\n  },\r\n  \"vehicle\": {\r\n    \"make\": \"Maruti\",\r\n    \"model\": \"Swift\",\r\n    \"year\": 2019,\r\n    \"vin\": \"SWIFT2019VIN123\"\r\n  },\r\n  \"coverage\": {\r\n    \"type\": \"Full Coverage\",\r\n    \"liabilityLimit\": 500000,\r\n    \"collisionDeductible\": 5000,\r\n    \"comprehensiveDeductible\": 3000\r\n  },\r\n  \"discounts\": {\r\n    \"safeDriver\": true,\r\n    \"multiPolicy\": false\r\n  }\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -158,9 +243,9 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/policies/{{policyId}}",
+          "raw": "{{baseurl}}/policies/{{policyId}}",
           "host": [
-            "{{baseUrl}}"
+            "{{baseurl}}"
           ],
           "path": [
             "policies",
@@ -177,19 +262,38 @@
           "listen": "test",
           "script": {
             "exec": [
-              "// Check status code\r",
+              "// ✅ Check status code\r",
               "pm.test(\"Status code is 200\", function () {\r",
               "    pm.response.to.have.status(200);\r",
               "});\r",
               "\r",
-              "// Parse response JSON\r",
+              "// ✅ Parse response JSON\r",
               "let jsonData = pm.response.json();\r",
               "\r",
-              "// Validate delete message\r",
+              "// ✅ Ensure response is not empty\r",
+              "pm.test(\"Response is not empty\", function () {\r",
+              "    pm.expect(jsonData).to.not.be.empty;\r",
+              "});\r",
               "\r",
+              "// ✅ Verify delete message\r",
               "pm.test(\"Policy deleted successfully\", function () {\r",
-              "    pm.expect(jsonData.id).to.eql(pm.environment.get(\"policyId\"));\r",
-              "});"
+              "    pm.expect(jsonData.message).to.eql(\"Deleted successfully\");\r",
+              "});\r",
+              "\r",
+              "// ✅ Verify deleted object exists (optional, only if API returns it)\r",
+              "if (jsonData.deleted) {\r",
+              "    pm.test(\"Deleted policy object returned\", function () {\r",
+              "        pm.expect(jsonData.deleted).to.not.be.undefined;\r",
+              "        pm.expect(jsonData.deleted).to.have.property(\"id\");\r",
+              "        pm.expect(jsonData.deleted).to.have.property(\"policyNumber\");\r",
+              "    });\r",
+              "\r",
+              "    pm.test(\"Deleted policy ID matches\", function () {\r",
+              "        pm.expect(jsonData.deleted.id).to.eql(parseInt(pm.environment.get(\"policyId\")));\r",
+              "    });\r",
+              "} else {\r",
+              "    console.log(\"⚠️ No deleted object returned in response\");\r",
+              "}"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -198,12 +302,12 @@
         }
       ],
       "request": {
-        "method": "GET",
+        "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/policies/{{policyId}}",
+          "raw": "{{baseurl}}/policies/{{policyId}}",
           "host": [
-            "{{baseUrl}}"
+            "{{baseurl}}"
           ],
           "path": [
             "policies",

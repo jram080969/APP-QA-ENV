@@ -51,27 +51,31 @@ app.post("/policies", (req, res) => {
   res.status(201).json(newPolicy);
 });
 
-// PATCH
+// PATCH (partial update enabled)
 app.patch("/policies/:id", (req, res) => {
   let policies = readData();
   const policy = policies.find(p => p.id == req.params.id);
 
   if (!policy) return res.status(404).json({ message: "Policy not found" });
 
+  // Merge only provided fields into existing policy
   Object.assign(policy, req.body);
-  writeData(policies);
 
+  writeData(policies);
   res.json(policy);
 });
 
 // DELETE
 app.delete("/policies/:id", (req, res) => {
   let policies = readData();
-  policies = policies.filter(p => p.id != req.params.id);
+  const index = policies.findIndex(p => p.id == req.params.id);
 
+  if (index === -1) return res.status(404).json({ message: "Policy not found" });
+
+  const deleted = policies.splice(index, 1);
   writeData(policies);
 
-  res.json({ message: "Deleted successfully" });
+  res.json({ message: "Deleted successfully", deleted });
 });
 
 // START SERVER
