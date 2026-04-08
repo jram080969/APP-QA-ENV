@@ -1,0 +1,190 @@
+[
+  {
+    "id": 1,
+    "policyNumber": "POL1",
+    "customer": {
+      "name": "Ravi Kumar",
+      "age": 28,
+      "driverLicense": "DL-AP-123456",
+      "address": "Madhurawada, Vizag"
+    },
+    "vehicle": {
+      "make": "Maruti",
+      "model": "Swift",
+      "year": 2019,
+      "vin": "SWIFT2019VIN123"
+    },
+    "coverage": {
+      "type": "Full Coverage",
+      "liabilityLimit": 500000,
+      "collisionDeductible": 5000,
+      "comprehensiveDeductible": 3000
+    },
+    "discounts": {
+      "safeDriver": true,
+      "multiPolicy": false,
+      "antiTheftDevice": true
+    },
+    "rating": {
+      "baseRate": 10000,
+      "riskFactor": 2000,
+      "discountAmount": 1000,
+      "taxes": 500,
+      "calculatedPremium": 11500
+    },
+    "underwriting": {
+      "riskLevel": "Low",
+      "status": "Auto-Approved"
+    },
+    "payment": {
+      "amount": 11500,
+      "method": "Debit Card",
+      "transactionId": "TXN123456789"
+    },
+    "issuance": {
+      "issueDate": "2026-04-06",
+      "documentLink": "https://mockapi.io/policies/1.pdf"
+    }
+  },
+  {
+    "id": 2,
+    "policyNumber": "POL2",
+    "customer": {
+      "name": "Ravi Kumar",
+      "age": 28,
+      "driverLicense": "DL-AP-123456",
+      "address": "Madhurawada, Vizag"
+    },
+    "vehicle": {
+      "make": "Maruti",
+      "model": "Swift",
+      "year": 2019,
+      "vin": "SWIFT2019VIN123"
+    },
+    "coverage": {
+      "type": "Full Coverage",
+      "liabilityLimit": 500000,
+      "collisionDeductible": 5000,
+      "comprehensiveDeductible": 3000
+    },
+    "discounts": {
+      "safeDriver": true,
+      "multiPolicy": false,
+      "antiTheftDevice": true
+    },
+    "rating": {
+      "baseRate": 10000,
+      "riskFactor": 2000,
+      "discountAmount": 1000,
+      "taxes": 500,
+      "calculatedPremium": 11500
+    },
+    "underwriting": {
+      "riskLevel": "Low",
+      "status": "Auto-Approved"
+    },
+    "payment": {
+      "amount": 11500,
+      "method": "Debit Card",
+      "transactionId": "TXN123456789"
+    },
+    "issuance": {
+      "issueDate": "2026-04-06",
+      "documentLink": "https://mockapi.io/policies/1.pdf"
+    }
+  },
+  {
+    "id": 3,
+    "policyNumber": "POL3",
+    "customer": {
+      "name": "Ravi Kumar",
+      "age": 28,
+      "driverLicense": "DL-AP-123456",
+      "address": "Madhurawada, Vizag"
+    },
+    "vehicle": {
+      "make": "Maruti",
+      "model": "Swift",
+      "year": 2019,
+      "vin": "SWIFT2019VIN123"
+    },
+    "coverage": {
+      "type": "Full Coverage",
+      "liabilityLimit": 500000,
+      "collisionDeductible": 5000,
+      "comprehensiveDeductible": 3000
+    },
+    "discounts": {
+      "safeDriver": true,
+      "multiPolicy": false,
+      "antiTheftDevice": true
+    },
+    "rating": {
+      "baseRate": 10000,
+      "riskFactor": 2000,
+      "discountAmount": 1000,
+      "taxes": 500,
+      "calculatedPremium": 11500
+    },
+    "underwriting": {
+      "riskLevel": "Low",
+      "status": "Auto-Approved"
+    },
+    "payment": {
+      "amount": 11500,
+      "method": "Debit Card",
+      "transactionId": "TXN123456789"
+    },
+    "issuance": {
+      "issueDate": "2026-04-06",
+      "documentLink": "https://mockapi.io/policies/2.pdf"
+    }
+  },
+  {
+    "id": 4,
+    "policyNumber": "POL4",
+    "customer": {
+      "name": "Ravi Kumar",
+      "age": 28,
+      "driverLicense": "DL-AP-123456",
+      "address": "Madhurawada, Vizag"
+    },
+    "vehicle": {
+      "make": "Maruti",
+      "model": "Swift",
+      "year": 2019,
+      "vin": "SWIFT2019VIN123"
+    },
+    "coverage": {
+      "type": "Full Coverage",
+      "liabilityLimit": 500000,
+      "collisionDeductible": 5000,
+      "comprehensiveDeductible": 3000
+    },
+    "discounts": {
+      "safeDriver": true,
+      "multiPolicy": false,
+      "antiTheftDevice": true
+    },
+    "rating": {
+      "baseRate": 10000,
+      "riskFactor": 2000,
+      "discountAmount": 1000,
+      "taxes": 500,
+      "calculatedPremium": 11500
+    },
+    "underwriting": {
+      "riskLevel": "Low",
+      "status": "Auto-Approved"
+    },
+    "payment": {
+      "amount": 11500,
+      "method": "Debit Card",
+      "transactionId": "TXN123456789"
+    },
+    "issuance": {
+      "issueDate": "2026-04-06",
+      "documentLink": "https://mockapi.io/policies/3.pdf"
+    }
+  }
+]
