@@ -1,6 +1,7 @@
 const fs = require("fs");
 const express = require("express");
 const app = express();
+
 app.use(express.json());
 
 const DATA_FILE = "data.json";
@@ -74,12 +75,7 @@ app.delete("/policies/:id", (req, res) => {
 });
 
 // START SERVER
-app.listen(3000, () => {
-  console.log("Server running at http://localhost:3000");
-});
-
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
